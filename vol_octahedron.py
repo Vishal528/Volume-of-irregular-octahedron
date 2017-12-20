@@ -28,9 +28,12 @@ def volume_octahedron(input_list):
         M=list(comb)
 
         #1 is added to every set of co-ordinates in order to find the volume of the polyhedron formed by the 4 co-ordinates
+
         for i in range(len(M)):
             M[i] = M[i]+[1]
+
         # The points lie in a plane if the determinant is zero . So, that condition is checked
+
         if numpy.linalg.det(M) == 0:
                 input_copy.remove(list(comb)[i])
             break
@@ -47,13 +50,12 @@ def volume_octahedron(input_list):
        [M[2][0]-M[0][0],M[2][1]-M[0][1],M[2][2]-M[0][2]]]
 
     #If the points lie on opposite sides of the plane the following condition is satisfied
+
     if numpy.linalg.det(A)*numpy.linalg.det(B) < 0:
         print("The 6 points form an octahedron in 3-d space")
         volume = ConvexHull(input_list).volume
         return volume
-    else:
-       print("The points don't form an octahedron")
-
-
+    
+#A sample input is provided and the output is obtained
 sample_list = [[1,1,0],[1,-1,0],[-1,1,0],[-1,-1,0],[0,0,2**0.5],[0,0,-2**0.5]]
 print("\nThe volume of the octahedron is "+str(volume_octahedron(sample_list))+" cubic units")
